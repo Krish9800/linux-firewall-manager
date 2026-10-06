@@ -1,0 +1,25 @@
+services:
+  firewall-manager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: linux-firewall-manager
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - FW_BACKEND=simulation
+      - FW_ENVIRONMENT=production
+      - FW_PORT=8000
+      - FW_HOST=0.0.0.0
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
