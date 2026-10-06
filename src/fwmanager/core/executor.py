@@ -44,6 +44,7 @@ class SimulationDriver(FirewallDriver):
     """Safe, in-memory simulation driver for non-root testing and CI/CD validation."""
 
     def __init__(self) -> None:
+        self.backend_type = "simulation"
         self.active_policy: Optional[FirewallPolicy] = None
         self.command_history: List[str] = []
 
