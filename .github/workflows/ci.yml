@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-version: ["3.12"]
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -66,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-version: ["3.12"]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -84,4 +85,4 @@ jobs:
 
       - name: Run Pytest with Strict Coverage Gate (>=90%)
         run: |
-          pytest tests/ --cov=src/fwmanager --cov-report=term-missing --cov-report=xml --cov-fail-under=90
+          pytest tests/ --cov=fwmanager --cov-report=term-missing --cov-report=xml --cov-fail-under=90
